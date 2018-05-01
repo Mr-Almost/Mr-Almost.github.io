@@ -1,6 +1,6 @@
 ---
 title: git备份博客
-date: 2018-04-01 15:35:05
+date: 2018-04-03 15:35:05
 tags:
 ---
 1.gitbash的位置定位到git指向username.github.io的文件夹，把博客代码放在这里
