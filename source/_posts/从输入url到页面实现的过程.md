@@ -21,13 +21,13 @@ tags:
 ## 1.输入网址Url
 
 端口默认为80，一共有6要素:协议，域名，路径，查询参数，锚点，端口
-<img src="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_b.jpg" data-caption="" data-size="normal" data-rawwidth="1272" data-rawheight="344" class="origin_image zh-lightbox-thumb" width="1272" data-original="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_r.jpg">![](https://pic3.zhimg.com/80/v2-24f77b31189d486d7948452308e53aa7_hd.jpg)
+<img src="http://p824lkmi5.bkt.clouddn.com/url.PNG">
 URI：**统一资源标识符**（英语：Uniform Resource Identifier）
 
 URL:**统一资源定位符**(英语：Uniform Resource Locator）
 
 URN:**统一资源名称**（英语：Uniform Resource Name）
-<img src="https://pic4.zhimg.com/v2-b9108d75dd65e82adc31581dddcd222e_b.jpg" data-caption="" data-size="normal" data-rawwidth="257" data-rawheight="147" class="content_image" width="257">![](https://pic4.zhimg.com/80/v2-b9108d75dd65e82adc31581dddcd222e_hd.jpg)
+<img src="http://p824lkmi5.bkt.clouddn.com/v2-721bec67cf5bf151c0bc21f44a9bca20_b.jpg">
 URI可被视为定位符（URL），名称（URN）或两者兼备。
 
 URL代表一个人的住址，如网址[http://www.wikipedia.org/](https://link.zhihu.com/?target=http%3A//www.wikipedia.org/)
@@ -105,7 +105,7 @@ UDP协议：发送以后就不管了，不去确认信息是否到达。说什�
 TCP 可靠、面向连接、相对 UDP 较慢；
 
 UDP 不可靠，不面向连接、相对 TCP 较快。搞定。
-<img src="https://pic1.zhimg.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_b.jpg" data-size="normal" data-rawwidth="700" data-rawheight="372" class="origin_image zh-lightbox-thumb" width="700" data-original="https://pic1.zhimg.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_r.jpg">![](https://pic1.zhimg.com/80/v2-d23102b52df5cd3fe37ba61bba89f5b2_hd.jpg)osi模型
+<img src="http://p824lkmi5.bkt.clouddn.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_r.jpg">
 ## 5.网页请求
 
 浏览器会开始构造一个**应用层**的 http 请求，把**传输层**tcp 包被封到**网络层**的 ip 包里面，ip 包再被封装到**数据链路层**的数据帧结构中，再通过**物理层**的比特流送出去。

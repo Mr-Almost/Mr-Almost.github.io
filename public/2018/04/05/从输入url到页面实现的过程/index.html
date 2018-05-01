@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="大部分参考来自从输入 URL 到页面加载完成的过程中都发生了什么事情？ 总过程： 输入网址URL 缓存机制 DNS解析 TCP连接 发送http请求 接受响应，判断状态码选择处理方式 判断缓存 解码 渲染 连接结束  1.输入网址Url端口默认为80，一共有6要素:协议，域名，路径，查询参数，锚点，端口URI：统一资源标识符（英语：Uniform Resource Identifier） URL:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从输入url到页面加载完成的过程">
+<meta property="og:url" content="http://yoursite.com/2018/04/05/从输入url到页面实现的过程/index.html">
+<meta property="og:site_name" content="Mr-Almost">
+<meta property="og:description" content="大部分参考来自从输入 URL 到页面加载完成的过程中都发生了什么事情？ 总过程： 输入网址URL 缓存机制 DNS解析 TCP连接 发送http请求 接受响应，判断状态码选择处理方式 判断缓存 解码 渲染 连接结束  1.输入网址Url端口默认为80，一共有6要素:协议，域名，路径，查询参数，锚点，端口URI：统一资源标识符（英语：Uniform Resource Identifier） URL:">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_b.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-24f77b31189d486d7948452308e53aa7_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-b9108d75dd65e82adc31581dddcd222e_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-b9108d75dd65e82adc31581dddcd222e_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-b25c1588fb03898fccd8d4a1cc4931c1_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-b25c1588fb03898fccd8d4a1cc4931c1_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-d23102b52df5cd3fe37ba61bba89f5b2_hd.jpg">
+<meta property="og:updated_time" content="2018-05-01T15:55:46.699Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从输入url到页面加载完成的过程">
+<meta name="twitter:description" content="大部分参考来自从输入 URL 到页面加载完成的过程中都发生了什么事情？ 总过程： 输入网址URL 缓存机制 DNS解析 TCP连接 发送http请求 接受响应，判断状态码选择处理方式 判断缓存 解码 渲染 连接结束  1.输入网址Url端口默认为80，一共有6要素:协议，域名，路径，查询参数，锚点，端口URI：统一资源标识符（英语：Uniform Resource Identifier） URL:">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_b.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/05/从输入url到页面实现的过程/"/>
+
+
+
+
+
+  <title>从输入url到页面加载完成的过程 | Mr-Almost</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr-Almost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/05/从输入url到页面实现的过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr-Almost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从输入url到页面加载完成的过程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-05T12:03:12+08:00">
+                2018-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>大部分参考来自<a href="https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/71cf7f69eca8" target="_blank" rel="noopener">从输入 URL 到页面加载完成的过程中都发生了什么事情？</a></p>
+<h2 id="总过程："><a href="#总过程：" class="headerlink" title="总过程："></a>总过程：</h2><ol>
+<li>输入网址URL</li>
+<li>缓存机制</li>
+<li>DNS解析</li>
+<li>TCP连接</li>
+<li>发送http请求</li>
+<li>接受响应，判断状态码选择处理方式</li>
+<li>判断缓存</li>
+<li>解码</li>
+<li>渲染</li>
+<li>连接结束</li>
+</ol>
+<h2 id="1-输入网址Url"><a href="#1-输入网址Url" class="headerlink" title="1.输入网址Url"></a>1.输入网址Url</h2><p>端口默认为80，一共有6要素:协议，域名，路径，查询参数，锚点，端口<br><img src="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_b.jpg" data-caption="" data-size="normal" data-rawwidth="1272" data-rawheight="344" class="origin_image zh-lightbox-thumb" width="1272" data-original="https://pic3.zhimg.com/v2-24f77b31189d486d7948452308e53aa7_r.jpg"><img src="https://pic3.zhimg.com/80/v2-24f77b31189d486d7948452308e53aa7_hd.jpg" alt=""><br>URI：<strong>统一资源标识符</strong>（英语：Uniform Resource Identifier）</p>
+<p>URL:<strong>统一资源定位符</strong>(英语：Uniform Resource Locator）</p>
+<p>URN:<strong>统一资源名称</strong>（英语：Uniform Resource Name）<br><img src="https://pic4.zhimg.com/v2-b9108d75dd65e82adc31581dddcd222e_b.jpg" data-caption="" data-size="normal" data-rawwidth="257" data-rawheight="147" class="content_image" width="257"><img src="https://pic4.zhimg.com/80/v2-b9108d75dd65e82adc31581dddcd222e_hd.jpg" alt=""><br>URI可被视为定位符（URL），名称（URN）或两者兼备。</p>
+<p>URL代表一个人的住址，如网址<a href="https://link.zhihu.com/?target=http%3A//www.wikipedia.org/" target="_blank" rel="noopener">http://www.wikipedia.org/</a></p>
+<p>URN如同一个人的名称，如书号<a href="https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/wiki/urn%3AISBN" target="_blank" rel="noopener">ISBN</a> 0-395-36341-1 </p>
+<blockquote>
+<p>换言之，URN定义某事物的身份，而URL提供查找该事物的方法</p>
+</blockquote>
+<h2 id="2-经过缓存机制"><a href="#2-经过缓存机制" class="headerlink" title="2.经过缓存机制"></a>2.经过缓存机制</h2><p>将URL与缓存进行比对如果请求的页面在缓存中且未过期，则直接进行<strong>第7步</strong></p>
+<p><strong>2.1 彻底缓存的机制（http首部字段）：cache-control，Expires</strong></p>
+<p>–Expires是一个绝对时间，即服务器时间。浏览器检查当前时间，如果还没到失效时间就直接使用缓存文件。但是该方法存在一个问题：服务器时间与客户端时间可能不一致。因此该字段已经很少使用，现在基本用cache-control进行判断。</p>
+<p>–cache-control中的max-age保存一个相对时间。例如Cache-Control: max-age = 484200，表示浏览器收到文件后，缓存在484200s内均有效。 如果同时存在cache-control和Expires，浏览器总是优先使用cache-control。</p>
+<p><strong>2.2 当缓存过期时，浏览器会向服务器发起请求询问资源是否真正过期，这就是缓存协商。对应http首部字段：last-modified，Etag</strong></p>
+<p>–last-modified是第一次请求资源时，服务器返回的字段，表示最后一次更新的时间。下一次浏览器请求资源时就发送if-modified-since字段。服务器用本地Last-modified时间与if-modified-since时间比较，如果不一致则认为缓存已过期并返回新资源给浏览器；如果时间一致则发送304状态码，让浏览器继续使用缓存。当然，用该方法也存在问题，比如修改时间有变化但实际内容没有变化，而服务器却再次将资源发送给浏览器。所以，使用Etag进行判断更好。</p>
+<p>–Etag：资源的实体标识（哈希字符串），当资源内容更新时，Etag会改变。服务器会判断Etag是否发生变化，如果变化则返回新资源，否则返回304。</p>
+<blockquote>
+<p>缓存协商的过程需要发起一起HTTP请求，如果返回304则继续使用缓存。对于移动端一次请求还是有代价的，所以我们需要避免304。<br>对于很少进行更改的静态文件，可以在文件名中加入版本号，如get.v1.js，并且把Cache-Control的max-age设置成一年半载，这样就不会发送请求。<br>需要注意的是，当这些文件更新的时候，我们需要更新其版本号，这样浏览器才会到服务器下载新资源。</p>
+</blockquote>
+<p><img src="https://pic1.zhimg.com/v2-b25c1588fb03898fccd8d4a1cc4931c1_b.jpg" data-caption="" data-size="normal" data-rawwidth="692" data-rawheight="1031" class="origin_image zh-lightbox-thumb" width="692" data-original="https://pic1.zhimg.com/v2-b25c1588fb03898fccd8d4a1cc4931c1_r.jpg"><img src="https://pic1.zhimg.com/80/v2-b25c1588fb03898fccd8d4a1cc4931c1_hd.jpg" alt=""></p>
+<h2 id="3-DNS解析得到ip："><a href="#3-DNS解析得到ip：" class="headerlink" title="3.DNS解析得到ip："></a>3.DNS解析得到ip：</h2><p>由于ip比较难记，所以一般输入域名，通过dns解析得到ip。</p>
+<p>網域名稱系統（英文：Domain Name System，縮寫：DNS）是互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。</p>
+<p><strong>DNS查找缓存顺序：浏览器缓存——&gt;hosts文件——&gt;路由器缓存——&gt;网络服务商缓存——&gt;根域名服务器缓存</strong></p>
+<h2 id="4-建立连接–三次握手"><a href="#4-建立连接–三次握手" class="headerlink" title="4.建立连接–三次握手"></a>4.建立连接–三次握手</h2><p>得到 ip 地址后，知道了服务器的 IP 地址，下面便开始与服务器建立连接了。</p>
+<p>TCP是互联网中的传输层协议，提供可靠的链接服务，采用三次握手确认一个连接：</p>
+<ol>
+<li><p>浏览器向服务器发送建立连接的请求。</p>
+</li>
+<li><p>服务器接收到浏览器发送的请求后，想浏览器发送统一连接的信号。</p>
+</li>
+<li><p>浏览器接受到服务器发出的同意连接的信号后，再次向服务器发出确认连接的信号。</p>
+</li>
+</ol>
+<p>当三次握手返程，TCP客户端和服务端成功的建立连接，就可以开始传输数据了。</p>
+<p><strong>第三次是防止了服务器端的一直等待而浪费资源</strong></p>
+<p>三次握手的过程：<br>主机向服务器发送一个建立连接的请求（您好，我想认识您）；<br>服务器接到请求后发送同意连接的信号（好的，很高兴认识您）；<br>主机接到同意连接的信号后，再次向服务器发送了确认信号（我也很高兴认识您），自此，主机与服务器两者建立了连接。</p>
+<p>TCP/IP协议层次 模型共分为四层，分别是：应用层、传输层、网络层、数据链路层</p>
+<p>应用层 http、ftp、DNS    比如浏览器登录界面</p>
+<p>传输层tcp/udp  传的快慢</p>
+<p>网络层ip        路由器，指导传送路径</p>
+<p>数据链路层    交换机，处理帧数据</p>
+<p>tcp协议：发送信息以后，可以确认信息是否到达，也就是有应答的方式。先确认有没有人，传到之后也会告诉你成功了。可以比喻成很慢的打电话，可以有效确认。但是速度上是比udp慢的。</p>
+<p>UDP协议：发送以后就不管了，不去确认信息是否到达。说什么就传什么的机制。可以比喻成飞快的写信，发了不知道有没有收到，速度上比tcp快。</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.nowcoder.com/questionTerminal/63c8b45c91a544bd8febc1f1ff02e3b5%3FtoCommentId%3D73766" target="_blank" rel="noopener">TCP 和 UDP 的区别是什么</a><br>TCP 可靠、面向连接、相对 UDP 较慢；</p>
+<p>UDP 不可靠，不面向连接、相对 TCP 较快。搞定。<br><img src="https://pic1.zhimg.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_b.jpg" data-size="normal" data-rawwidth="700" data-rawheight="372" class="origin_image zh-lightbox-thumb" width="700" data-original="https://pic1.zhimg.com/v2-d23102b52df5cd3fe37ba61bba89f5b2_r.jpg"><img src="https://pic1.zhimg.com/80/v2-d23102b52df5cd3fe37ba61bba89f5b2_hd.jpg" alt="">osi模型</p>
+<h2 id="5-网页请求"><a href="#5-网页请求" class="headerlink" title="5.网页请求"></a>5.网页请求</h2><p>浏览器会开始构造一个<strong>应用层</strong>的 http 请求，把<strong>传输层</strong>tcp 包被封到<strong>网络层</strong>的 ip 包里面，ip 包再被封装到<strong>数据链路层</strong>的数据帧结构中，再通过<strong>物理层</strong>的比特流送出去。</p>
+<p>http规定如何请求响应的书写。应用层</p>
+<p>tcp规定如何传输。传输层</p>
+<p>ip规定如何连接以及对应位置。网络层</p>
+<p>port对应ip不同服务</p>
+<p>一个典型的 http 请求的 header 一般需要包括请求的方法，例如 GET 或者 POST 等。</p>
+<p>浏览器向 web 服务器发送一个 HTTP 请求，请求中包含请求文件的位置、请求文件的方式等等</p>
+<h2 id="6-浏览器接受-HTTP-响应，检查-HTTP-header-里的状态码，并做出不同的处理方式"><a href="#6-浏览器接受-HTTP-响应，检查-HTTP-header-里的状态码，并做出不同的处理方式" class="headerlink" title="6.浏览器接受 HTTP 响应，检查 HTTP header 里的状态码，并做出不同的处理方式"></a>6.浏览器接受 HTTP 响应，检查 HTTP header 里的状态码，并做出不同的处理方式</h2><blockquote>
+<p>比如404显示错误页面，304使用缓存，200下一步解码和渲染， 204页面不会发生更新。<br>常见状态码：200 ok, 204 no content, 206 partial content<br>301 moved permanently(资源已分配新的uri)，302 found(本次使用新uri访问)，303 see other(以get定向到另一个uri)，304 not modified, 307 temporary redirect(不会从post改为get)<br>400 bad request，402 unauthorized，403 forbidden, 404 not found<br>500 internal server error，503 service unavailable</p>
+</blockquote>
+<h2 id="7-如果是可以缓存的，这个响应则会被存储起来"><a href="#7-如果是可以缓存的，这个响应则会被存储起来" class="headerlink" title="7.如果是可以缓存的，这个响应则会被存储起来"></a>7.如果是可以缓存的，这个响应则会被存储起来</h2><p>根据首部字段判断是否进行缓存。例如，Cache-Control, no-cache(每次使用缓存前和服务器确认)，no-store 绝对禁止缓存</p>
+<h2 id="8-解码"><a href="#8-解码" class="headerlink" title="8.解码"></a>8.解码</h2><p>9.1 浏览器拿到index.html文件后，就开始解析其中的html代码，遇到js/css/image等静态资源时，就向服务器端去请求下载</p>
+<p>9.2 解析成对应的树形数据结构DOM树、CSS规则树，Javascript脚本通过DOM API和CSSOM API来操作DOM树、CSS规则树。</p>
+<h2 id="9-渲染"><a href="#9-渲染" class="headerlink" title="9.渲染"></a>9.渲染</h2><p>10.1 计算CSS样式（JS可动态修改dom或css,进一步改变渲染树和分布）</p>
+<p>10.2 构建渲染树（Repaint：屏幕的一部分要重画，比如某个CSS的背景色变了，元素的几何尺寸没有变。Reflow：几何尺寸变了，我们需要重新验证并计算Render Tree。）</p>
+<p>10.3 确认布局（定位坐标和大小，是否换行，各种position, overflow, z-index属性 ……）</p>
+<p>10.4 绘制（调用操作系统Native GUI的API绘制，将每个节点转化为实际像素绘制到视口上）</p>
+<h2 id="10-断开连接–四次挥手"><a href="#10-断开连接–四次挥手" class="headerlink" title="10.断开连接–四次挥手"></a>10.断开连接–四次挥手</h2><p>四次挥手的过程：<br>主机向服务器发送一个断开连接的请求（不早了，我该走了）；<br>服务器接到请求后发送确认收到请求的信号（知道了）；<br>服务器向主机发送断开通知（我也该走了）；<br>主机接到断开通知后断开连接并反馈一个确认信号（嗯，好的），服务器收到确认信号后断开连接；</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/04/命令行与脚本/" rel="next" title="命令行与脚本">
+                <i class="fa fa-chevron-left"></i> 命令行与脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/19/一个梦/" rel="prev" title="一个梦">
+                一个梦 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description">翟俊豪，深大大三</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总过程："><span class="nav-number">1.</span> <span class="nav-text">总过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-输入网址Url"><span class="nav-number">2.</span> <span class="nav-text">1.输入网址Url</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-经过缓存机制"><span class="nav-number">3.</span> <span class="nav-text">2.经过缓存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DNS解析得到ip："><span class="nav-number">4.</span> <span class="nav-text">3.DNS解析得到ip：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-建立连接–三次握手"><span class="nav-number">5.</span> <span class="nav-text">4.建立连接–三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-网页请求"><span class="nav-number">6.</span> <span class="nav-text">5.网页请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-浏览器接受-HTTP-响应，检查-HTTP-header-里的状态码，并做出不同的处理方式"><span class="nav-number">7.</span> <span class="nav-text">6.浏览器接受 HTTP 响应，检查 HTTP header 里的状态码，并做出不同的处理方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-如果是可以缓存的，这个响应则会被存储起来"><span class="nav-number">8.</span> <span class="nav-text">7.如果是可以缓存的，这个响应则会被存储起来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-解码"><span class="nav-number">9.</span> <span class="nav-text">8.解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-渲染"><span class="nav-number">10.</span> <span class="nav-text">9.渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-断开连接–四次挥手"><span class="nav-number">11.</span> <span class="nav-text">10.断开连接–四次挥手</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
