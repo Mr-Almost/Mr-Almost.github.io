@@ -82,11 +82,11 @@
 <meta name="description" content="本文有三个目的： 1.如何简化命令行 2.创建bash脚本 &amp;amp; 写bash脚本 3.创建js脚本 &amp;amp; 写js脚本 ##简化命令行自动运行目的：打开gitbash自动进入桌面目录操作： 在 .bashrc里添加cd  ~/Desktop Alias指令别名 （可以缩写指令）目的：定义一个指令的缩写，如：输入f可以打印fank is awesome操作：在 .bashrc里添加alia">
 <meta property="og:type" content="article">
 <meta property="og:title" content="命令行与脚本">
-<meta property="og:url" content="http://yoursite.com/2018/04/04/一个梦 - 副本/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/命令行与脚本/index.html">
 <meta property="og:site_name" content="Mr-Almost">
 <meta property="og:description" content="本文有三个目的： 1.如何简化命令行 2.创建bash脚本 &amp;amp; 写bash脚本 3.创建js脚本 &amp;amp; 写js脚本 ##简化命令行自动运行目的：打开gitbash自动进入桌面目录操作： 在 .bashrc里添加cd  ~/Desktop Alias指令别名 （可以缩写指令）目的：定义一个指令的缩写，如：输入f可以打印fank is awesome操作：在 .bashrc里添加alia">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-01T15:16:25.842Z">
+<meta property="og:updated_time" content="2018-05-01T15:18:32.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行与脚本">
 <meta name="twitter:description" content="本文有三个目的： 1.如何简化命令行 2.创建bash脚本 &amp;amp; 写bash脚本 3.创建js脚本 &amp;amp; 写js脚本 ##简化命令行自动运行目的：打开gitbash自动进入桌面目录操作： 在 .bashrc里添加cd  ~/Desktop Alias指令别名 （可以缩写指令）目的：定义一个指令的缩写，如：输入f可以打印fank is awesome操作：在 .bashrc里添加alia">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/04/一个梦 - 副本/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/04/命令行与脚本/"/>
 
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/一个梦 - 副本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/命令行与脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -303,7 +303,7 @@
 <p>1.如何简化命令行</p>
 <p>2.创建bash脚本 &amp; 写bash脚本</p>
 <p>3.创建js脚本 &amp; 写js脚本</p>
-<p>##<strong>简化命令行</strong><br><strong>自动运行</strong><br>目的：打开gitbash自动进入桌面目录<br>操作： 在 .bashrc里添加cd  ~/Desktop</p>
+<p>##简化命令行<br><strong>自动运行</strong><br>目的：打开gitbash自动进入桌面目录<br>操作： 在 .bashrc里添加cd  ~/Desktop</p>
 <p><strong>Alias指令别名 （可以缩写指令）</strong><br>目的：定义一个指令的缩写，如：输入f可以打印fank is awesome<br>操作：在 .bashrc里添加alias f=”echo ‘frank is awesome’”</p>
 <p><strong>Path路径 （把一个文件夹放进path路径，可以用来创建脚本）</strong><br>目的：把文件夹放进path路径<br>操作：export PATH=”目录的绝对路径:$PATH”</p>
 <p>##<strong>创建bash脚本</strong><br>目的：创建一个名为demo的bash脚本<br>操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">cd ~/local</span><br><span class="line">touch demo</span><br><span class="line">start demo</span><br><span class="line">(编辑demo内容为想要的内容)</span><br><span class="line">sh ~/local/demo  </span><br><span class="line"></span><br><span class="line">//这一步已大致完成了所需内容，不过要简化指令：减去sh与路径//</span><br><span class="line">//在.bashrc内添加以下两句//</span><br><span class="line"></span><br><span class="line">export PATH=&quot;目录的绝对路径:$PATH&quot; </span><br><span class="line">Source ~/.bashrc</span><br><span class="line">```  </span><br><span class="line">此时只需要输入demo就可以执行demo文件里编辑的内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">如果想把demo改为demo.sh</span><br><span class="line">操作： </span><br><span class="line">mv ~/local/demo  ~/local/demo.sh  //修改后缀</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查询命令的路径：</span><br><span class="line">      使用 type demo 可以看到寻找过程</span><br><span class="line">      使用 which demo 可以看到寻找结果</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##**写bash脚本**</span><br><span class="line">目的：输入demo即可生成名字为demo的目录 </span><br><span class="line">操作： 在demo文件里编辑以下内容</span><br></pre></td></tr></table></figure></p>
