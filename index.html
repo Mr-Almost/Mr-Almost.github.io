@@ -352,6 +352,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr-Almost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/06/服务器/" itemprop="url">服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T18:02:22+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Http请求"><a href="#Http请求" class="headerlink" title="Http请求"></a>Http请求</h2><p>请求一般是get和post</p>
+<p><strong>输入：curl -s -v -H “Frank: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a></strong></p>
+<p><strong>浏览器显示：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host: www.baidu.com</span><br><span class="line">User-Agent: curl/7.54.0</span><br><span class="line">Accept: */*</span><br><span class="line">Frank: xxx</span><br></pre></td></tr></table></figure></p>
+<p><strong>输入：curl -X POST -s -v -H “Frank: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a></strong></p>
+<p><strong>浏览器显示：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: www.baidu.com</span><br><span class="line">User-Agent: curl/7.54.0</span><br><span class="line">Accept: */*</span><br><span class="line">Frank: xxx</span><br></pre></td></tr></table></figure></p>
+<p><strong>浏览器显示格式：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1动词 路径 协议/版本</span><br><span class="line">2Key1: value1</span><br><span class="line">2Key2: value2</span><br><span class="line">2Key3: value3</span><br><span class="line">2Content-Type: application/x-www-form-urlencoded</span><br><span class="line">2Host: www.baidu.com</span><br><span class="line">2User-Agent: curl/7.54.0</span><br><span class="line">3</span><br><span class="line">4要上传的数据</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）</li>
+<li>第三部分永远都是一个回车（\n）</li>
+<li>动词有 GET  POST  PUT  PATCH  DELETE  HEAD  OPTIONS 等</li>
+<li>这里的路径包括「查询参数」，但不包括「锚点」</li>
+<li>如果你没有写路径，那么路径默认为 /</li>
+<li>第 2 部分中的 Content-Type 标注了第 4 部分的格式</li>
+</ul>
+<h2 id="Http响应"><a href="#Http响应" class="headerlink" title="Http响应"></a>Http响应</h2><p><strong>浏览器显示：</strong></p>
+<p>1 协议/版本号 状态码 状态解释<br>2 Key1: value1<br>2 Key2: value2<br>2 Content-Length: 17931<br>2 Content-Type: text/html<br>3<br>4 要下载的内容</p>
+<p><strong>状态码要背，是服务器对浏览器说的话：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1xx 不常用</span><br><span class="line">2xx 表示成功</span><br><span class="line">3xx 表示滚吧</span><br><span class="line">4xx 表示你丫错了</span><br><span class="line">5xx 表示好吧，我错了</span><br><span class="line">状态解释没什么用</span><br><span class="line">第 2 部分中的 Content-Type 标注了第 4 部分的格式</span><br><span class="line">第 2 部分中的 Content-Type 遵循 MIME 规范</span><br></pre></td></tr></table></figure></p>
+<p><strong>IP</strong></p>
+<ul>
+<li>一般默认情况下，hosts 文件里会有一行127.0.0.1 localhost，意思就是 localhost 指向 127.0.0.1，所以 localhost 也表示设备自己。</li>
+<li>路由会给自己分配一个好记的内网 IP，如 192.168.1.1</li>
+</ul>
+<p><strong>做一个服务器</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Desktop; </span><br><span class="line">mkdir node-demo; </span><br><span class="line">cd node-demo</span><br><span class="line">touch server.js</span><br><span class="line">编辑 server.js （下图为编辑内容）</span><br><span class="line">node server.js 8888</span><br></pre></td></tr></table></figure></p>
+<p>另外开一个gitbash窗口输入以下内容，观察效果即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:你的指定的端口/xxx</span><br></pre></td></tr></table></figure></p>
+<p>或者直接在浏览器输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:你的指定的端口/xxx</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户请求 / 时，返回 html 内容</span><br><span class="line">该 html 内容里面由一个 css link 和一个 script</span><br><span class="line">css link 会请求 /style.css，返回 css 内容</span><br><span class="line">script 会请求 /main.js，返回 js 内容</span><br><span class="line">请求 / /style.css /main.js 以外的路径，则一律返回 404 状态码</span><br></pre></td></tr></table></figure></p>
+<p>-文件内容是有 HTTP 头中的 Content-Type 保证的。content-type后面的东西才有用<br>-输入路径的/xxx没有用，不能代表什么，不要被迷惑。<br>-如果server.js内加上以下内容，会得到hi%。这个 % 不是我们的内容，% 表示结尾。如果不喜欢，把 ‘Hi’ 换成 ‘Hi\n’。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.write(&apos;Hi&apos;) </span><br><span class="line">response.end()</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/05/从输入url到页面实现的过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1093,7 +1239,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
