@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Mr-Almost">
 <meta property="og:description" content="Http请求请求一般是get和post 输入：curl -s -v -H “Frank: xxx” – “https://www.baidu.com&amp;quot; 浏览器显示：12345GET / HTTP/1.1Host: www.baidu.comUser-Agent: curl/7.54.0Accept: */*Frank: xxx 输入：curl -X POST -s -v -H “Fran">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-03T11:27:39.623Z">
+<meta property="og:updated_time" content="2018-05-03T11:31:23.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器">
 <meta name="twitter:description" content="Http请求请求一般是get和post 输入：curl -s -v -H “Frank: xxx” – “https://www.baidu.com&amp;quot; 浏览器显示：12345GET / HTTP/1.1Host: www.baidu.comUser-Agent: curl/7.54.0Accept: */*Frank: xxx 输入：curl -X POST -s -v -H “Fran">
@@ -325,7 +325,11 @@
 <p>另外开一个gitbash窗口输入以下内容，观察效果即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:你的指定的端口/xxx</span><br></pre></td></tr></table></figure></p>
 <p>或者直接在浏览器输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:你的指定的端口/xxx</span><br></pre></td></tr></table></figure></p>
 <p>效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户请求 / 时，返回 html 内容</span><br><span class="line">该 html 内容里面由一个 css link 和一个 script</span><br><span class="line">css link 会请求 /style.css，返回 css 内容</span><br><span class="line">script 会请求 /main.js，返回 js 内容</span><br><span class="line">请求 / /style.css /main.js 以外的路径，则一律返回 404 状态码</span><br></pre></td></tr></table></figure></p>
-<p>-文件内容是有 HTTP 头中的 Content-Type 保证的。content-type后面的东西才有用<br>-输入路径的/xxx没有用，不能代表什么，不要被迷惑。<br>-如果server.js内加上以下内容，会得到hi%。这个 % 不是我们的内容，% 表示结尾。如果不喜欢，把 ‘Hi’ 换成 ‘Hi\n’。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.write(&apos;Hi&apos;) </span><br><span class="line">response.end()</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>文件内容是有 HTTP 头中的 Content-Type 保证的。content-type后面的东西才有用</li>
+<li>输入路径的/xxx没有用，不能代表什么，不要被迷惑。</li>
+<li>如果server.js内加上以下内容，会得到hi%。这个 % 不是我们的内容，% 表示结尾。如果不喜欢，把 ‘Hi’ 换成 ‘Hi\n’。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.write(&apos;Hi&apos;) </span><br><span class="line">response.end()</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
