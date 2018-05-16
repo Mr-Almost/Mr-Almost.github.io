@@ -4,6 +4,7 @@ date: 2018-03-23 9:11:05
 tags:
 ---
 **配置 GitHub**
+```
 1.进入 https://github.com/settings/keys
 2.如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看
 3.点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看
@@ -18,13 +19,17 @@ tags:
 12.回到 Git Bash
 13.运行 ssh -T git@github.com
 14.输入 yes 回车
+```
 
-然后如果你看到 Permission denied (publickey). 就说明你失败了，请回到第 1 步重来，是的，回到第 1 步重来；如果你看到 Hi FrankFang! You've successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！
+然后如果你看到 Permission denied (publickey). 就说明你失败了，请回到第 1 步重来，是的，回到第 1 步重来；如果你看到 Hi xxx! You've successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！
 
+```
 - 一台电脑只需要一个 SSH key
 - 一个 SSH key 可以访问你的所有仓库，即使你有 1000000 个仓库，都没问题
 - 如果你新买了电脑，就在新电脑上重新生成一个 SSH key，把这个 key 也上传到 GitHub，它可以和之前的 key 共存在 GitHub 上
 - 如果你把 key 从电脑上删除了，重新生成一个 key 即可，替换之前的 key
+```
+
 **配置 git**
 git config --global user.name 你的英文名
 git config --global user.email 你的邮箱
