@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="title: 配置githubdate: 2018-03-23 9:11:05tags:配置 GitHub进入 https://github.com/settings/keys如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看打开 Git Bash复制并运">
+<meta name="description" content="配置 GitHub1.进入 https://github.com/settings/keys2.如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看3.点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看4.打开 Git Bash5.复制并运行 rm -rf ~/.ssh/* 把现有的 ssh key 都删掉，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mr-Almost">
-<meta property="og:url" content="http://yoursite.com/2018/05/16/配置github/index.html">
+<meta property="og:title" content="配置github">
+<meta property="og:url" content="http://yoursite.com/2018/03/23/配置github/index.html">
 <meta property="og:site_name" content="Mr-Almost">
-<meta property="og:description" content="title: 配置githubdate: 2018-03-23 9:11:05tags:配置 GitHub进入 https://github.com/settings/keys如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看打开 Git Bash复制并运">
+<meta property="og:description" content="配置 GitHub1.进入 https://github.com/settings/keys2.如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看3.点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看4.打开 Git Bash5.复制并运行 rm -rf ~/.ssh/* 把现有的 ssh key 都删掉，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-16T14:49:25.636Z">
+<meta property="og:updated_time" content="2018-05-16T14:56:56.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr-Almost">
-<meta name="twitter:description" content="title: 配置githubdate: 2018-03-23 9:11:05tags:配置 GitHub进入 https://github.com/settings/keys如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看打开 Git Bash复制并运">
+<meta name="twitter:title" content="配置github">
+<meta name="twitter:description" content="配置 GitHub1.进入 https://github.com/settings/keys2.如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看3.点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看4.打开 Git Bash5.复制并运行 rm -rf ~/.ssh/* 把现有的 ssh key 都删掉，">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/16/配置github/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/23/配置github/"/>
 
 
 
 
 
-  <title> | Mr-Almost</title>
+  <title>配置github | Mr-Almost</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/配置github/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/23/配置github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">配置github</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T22:47:11+08:00">
-                2018-05-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T09:11:05+08:00">
+                2018-03-23
               </time>
             
 
@@ -299,10 +299,15 @@
       
 
       
-        <hr>
-<p>title: 配置github<br>date: 2018-03-23 9:11:05<br>tags:<br>配置 GitHub<br>进入 <a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a><br>如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看<br>点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看<br>打开 Git Bash<br>复制并运行 rm -rf ~/.ssh/* 把现有的 ssh key 都删掉，这句命令行如果你多打一个空格，可能就要重装系统了，建议复制运行。<br>运行 ssh-keygen -t rsa -b 4096 -C “你的邮箱”，注意填写你的邮箱！<br>按回车三次<br>运行 cat ~/.ssh/id_rsa.pub，得到一串东西，完整的复制这串东西<br>回到上面第 3 步的页面，在 Title 输入「我的第一个 key」<br>在 Key 里粘贴刚刚你你复制的那串东西<br>点击 Add SSH key<br>回到 Git Bash<br>运行 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>输入 yes 回车</p>
+        <p><strong>配置 GitHub</strong><br>1.进入 <a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a><br>2.如果页面里已经有一些 key，就点「delete」按钮把这些 key 全删掉。如果没有，就往下看<br>3.点击 New SSH key，你需要输入 Title 和 Key，但是你现在没有 key，往下看<br>4.打开 Git Bash<br>5.复制并运行 rm -rf ~/.ssh/* 把现有的 ssh key 都删掉，这句命令行如果你多打一个空格，可能就要重装系统了，建议复制运行。<br>6.运行 ssh-keygen -t rsa -b 4096 -C “你的邮箱”，注意填写你的邮箱！<br>7.按回车三次<br>8.运行 cat ~/.ssh/id_rsa.pub，得到一串东西，完整的复制这串东西<br>9.回到上面第 3 步的页面，在 Title 输入「我的第一个 key」<br>10.在 Key 里粘贴刚刚你你复制的那串东西<br>11.点击 Add SSH key<br>12.回到 Git Bash<br>13.运行 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>14.输入 yes 回车</p>
 <p>然后如果你看到 Permission denied (publickey). 就说明你失败了，请回到第 1 步重来，是的，回到第 1 步重来；如果你看到 Hi FrankFang! You’ve successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！</p>
-<p>一台电脑只需要一个 SSH key<br>一个 SSH key 可以访问你的所有仓库，即使你有 1000000 个仓库，都没问题<br>如果你新买了电脑，就在新电脑上重新生成一个 SSH key，把这个 key 也上传到 GitHub，它可以和之前的 key 共存在 GitHub 上<br>如果你把 key 从电脑上删除了，重新生成一个 key 即可，替换之前的 key<br>配置 git<br>git config –global user.name 你的英文名<br>git config –global user.email 你的邮箱<br>git config –global push.default matching<br>git config –global core.quotepath false<br>git config –global core.editor “vim”<br>五句话，依次运行。不执行的话，电脑可能会爆炸。</p>
+<ul>
+<li>一台电脑只需要一个 SSH key</li>
+<li>一个 SSH key 可以访问你的所有仓库，即使你有 1000000 个仓库，都没问题</li>
+<li>如果你新买了电脑，就在新电脑上重新生成一个 SSH key，把这个 key 也上传到 GitHub，它可以和之前的 key 共存在 GitHub 上</li>
+<li>如果你把 key 从电脑上删除了，重新生成一个 key 即可，替换之前的 key<br><strong>配置 git</strong><br>git config –global user.name 你的英文名<br>git config –global user.email 你的邮箱<br>git config –global push.default matching<br>git config –global core.quotepath false<br>git config –global core.editor “vim”</li>
+</ul>
+<p>五句话，依次运行。不执行的话，电脑可能会爆炸。</p>
 
       
     </div>
@@ -327,15 +332,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/19/一个梦/" rel="next" title="一个梦">
-                <i class="fa fa-chevron-left"></i> 一个梦
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/02/开博大吉/" rel="prev" title="开博大吉">
+                开博大吉 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
