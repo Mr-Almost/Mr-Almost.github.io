@@ -31,10 +31,12 @@ tags:
 ```
 
 **配置 git**
+```
 git config --global user.name 你的英文名
 git config --global user.email 你的邮箱
 git config --global push.default matching
 git config --global core.quotepath false
 git config --global core.editor "vim"
+```
 
 五句话，依次运行。不执行的话，电脑可能会爆炸。
